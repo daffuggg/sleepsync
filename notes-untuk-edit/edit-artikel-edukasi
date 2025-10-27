@@ -1,0 +1,15 @@
+//notes-untuk-edit/edit-artikel-edukasi
+//This file is used to edit the educational articles data.
+//You can add, remove, or modify articles in the `educationData` object below.
+
+
+//educationData.articles.push({
+  //  id: 'artikel-baru',
+    //title: 'Judul Artikel',
+    //category: 'psychology', // psychology, tips, health, research
+   // excerpt: 'Ringkasan artikel...',
+    //content: 'Konten lengkap artikel...',
+    //readTime: 5,
+    //views: 0,
+    //likes: 0
+//});

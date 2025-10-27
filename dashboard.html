@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - SleepSync</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+    <link href="css/dashboard.css" rel="stylesheet">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+        <div class="container-fluid">
+            <a class="navbar-brand fw-bold" href="dashboard.html">
+                <i class="fas fa-moon me-2"></i>SleepSync
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="dashboard.html">Dashboard</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="sleep-tracker.html">Sleep Tracker</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="sleep-test.html">Tes Gaya Tidur</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="cbt-program.html">Program CBT-I</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="education.html">Edukasi</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="premium.html">
+                            <i class="fas fa-crown text-warning me-1"></i>Premium
+                        </a>
+                    </li>
+                </ul>
+                <ul class="navbar-nav">
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown">
+                            <i class="fas fa-user me-1"></i><span id="userName">User</span>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="#" onclick="logout()">
+                                <i class="fas fa-sign-out-alt me-2"></i>Keluar
+                            </a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="container-fluid py-4">
+        <div class="row">
+            <!-- Welcome Section -->
+            <div class="col-12 mb-4">
+                <div class="welcome-card">
+                    <div class="row align-items-center">
+                        <div class="col-md-8">
+                            <h2 class="fw-bold text-white mb-2">
+                                Selamat datang kembali, <span id="welcomeUserName">User</span>! 
+                                <i class="fas fa-sun text-warning ms-2"></i>
+                            </h2>
+                            <p class="text-white-50 mb-3">
+                                Bagaimana kualitas tidur Anda tadi malam? Mari lanjutkan perjalanan menuju tidur yang lebih berkualitas.
+                            </p>
+                            <div class="d-flex gap-2">
+                                <a href="sleep-tracker.html" class="btn btn-warning">
+                                    <i class="fas fa-plus me-2"></i>Catat Tidur Hari Ini
+                                </a>
+                                <a href="cbt-program.html" class="btn btn-outline-light">
+                                    <i class="fas fa-play me-2"></i>Lanjutkan Program
+                                </a>
+                            </div>
+                        </div>
+                        <div class="col-md-4 text-center">
+                            <div class="sleep-emoji">
+                                <i class="fas fa-bed fa-4x text-warning opacity-75"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Stats Cards -->
+            <div class="col-lg-3 col-md-6 mb-4">
+                <div class="stat-card">
+                    <div class="d-flex justify-content-between">
+                        <div>
+                            <h6 class="text-muted mb-1">Rata-rata Tidur</h6>
+                            <h3 class="fw-bold text-primary mb-0" id="avgSleep">7.2 jam</h3>
+                        </div>
+                        <div class="stat-icon bg-primary">
+                            <i class="fas fa-clock text-white"></i>
+                        </div>
+                    </div>
+                    <small class="text-success">
+                        <i class="fas fa-arrow-up me-1"></i>+0.5 jam dari minggu lalu
+                    </small>
+                </div>
+            </div>
+
+            <div class="col-lg-3 col-md-6 mb-4">
+                <div class="stat-card">
+                    <div class="d-flex justify-content-between">
+                        <div>
+                            <h6 class="text-muted mb-1">Kualitas Tidur</h6>
+                            <h3 class="fw-bold text-success mb-0" id="sleepQuality">Baik</h3>
+                        </div>
+                        <div class="stat-icon bg-success">
+                            <i class="fas fa-heart text-white"></i>
+                        </div>
+                    </div>
+                    <small class="text-success">
+                        <i class="fas fa-arrow-up me-1"></i>Meningkat 15%
+                    </small>
+                </div>
+            </div>
+
+            <div class="col-lg-3 col-md-6 mb-4">
+                <div class="stat-card">
+                    <div class="d-flex justify-content-between">
+                        <div>
+                            <h6 class="text-muted mb-1">Streak Hari</h6>
+                            <h3 class="fw-bold text-warning mb-0" id="streak">5 hari</h3>
+                        </div>
+                        <div class="stat-icon bg-warning">
+                            <i class="fas fa-fire text-white"></i>
+                        </div>
+                    </div>
+                    <small class="text-muted">Tidur teratur berturut-turut</small>
+                </div>
+            </div>
+
+            <div class="col-lg-3 col-md-6 mb-4">
+                <div class="stat-card">
+                    <div class="d-flex justify-content-between">
+                        <div>
+                            <h6 class="text-muted mb-1">Program CBT-I</h6>
+                            <h3 class="fw-bold text-info mb-0" id="cbtProgress">Hari 3</h3>
+                        </div>
+                        <div class="stat-icon bg-info">
+                            <i class="fas fa-brain text-white"></i>
+                        </div>
+                    </div>
+                    <small class="text-info">
+                        <i class="fas fa-arrow-right me-1"></i>43% selesai
+                    </small>
+                </div>
+            </div>
+
+            <!-- Quick Actions -->
+            <div class="col-12 mb-4">
+                <div class="card">
+                    <div class="card-header">
+                        <h5 class="mb-0">
+                            <i class="fas fa-bolt me-2 text-warning"></i>Aksi Cepat
+                        </h5>
+                    </div>
+                    <div class="card-body">
+                        <div class="row g-3">
+                            <div class="col-lg-3 col-md-6">
+                                <a href="sleep-tracker.html" class="quick-action-card">
+                                    <i class="fas fa-plus-circle fa-2x text-primary mb-2"></i>
+                                    <h6>Catat Tidur</h6>
+                                    <small class="text-muted">Input data tidur hari ini</small>
+                                </a>
+                            </div>
+                            <div class="col-lg-3 col-md-6">
+                                <a href="sleep-test.html" class="quick-action-card">
+                                    <i class="fas fa-user-check fa-2x text-success mb-2"></i>
+                                    <h6>Tes Gaya Tidur</h6>
+                                    <small class="text-muted">Cari tahu tipe tidurmu</small>
+                                </a>
+                            </div>
+                            <div class="col-lg-3 col-md-6">
+                                <a href="cbt-program.html" class="quick-action-card">
+                                    <i class="fas fa-calendar-week fa-2x text-warning mb-2"></i>
+                                    <h6>Program CBT-I</h6>
+                                    <small class="text-muted">Lanjutkan program 7 hari</small>
+                                </a>
+                            </div>
+                            <div class="col-lg-3 col-md-6">
+                                <a href="education.html" class="quick-action-card">
+                                    <i class="fas fa-book fa-2x text-info mb-2"></i>
+                                    <h6>Baca Artikel</h6>
+                                    <small class="text-muted">Tips dan edukasi tidur</small>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Recent Sleep Chart -->
+            <div class="col-lg-8 mb-4">
+                <div class="card">
+                    <div class="card-header d-flex justify-content-between align-items-center">
+                        <h5 class="mb-0">
+                            <i class="fas fa-chart-line me-2 text-primary"></i>Pola Tidur 7 Hari Terakhir
+                        </h5>
+                        <a href="sleep-tracker.html" class="btn btn-sm btn-outline-primary">
+                            Lihat Detail
+                        </a>
+                    </div>
+                    <div class="card-body">
+                        <div class="chart-container" style="position: relative; height: 250px;">
+                            <canvas id="sleepChart"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Today's Tip -->
+            <div class="col-lg-4 mb-4">
+                <div class="card h-100">
+                    <div class="card-header">
+                        <h5 class="mb-0">
+                            <i class="fas fa-lightbulb me-2 text-warning"></i>Tips Hari Ini
+                        </h5>
+                    </div>
+                    <div class="card-body">
+                        <div class="tip-of-day">
+                            <div class="tip-icon mb-3">
+                                <i class="fas fa-moon fa-3x text-primary opacity-75"></i>
+                            </div>
+                            <h6 class="fw-bold">Hindari Cahaya Biru</h6>
+                            <p class="text-muted mb-3">
+                                Matikan gadget 1 jam sebelum tidur untuk meningkatkan produksi melatonin alami.
+                            </p>
+                            <a href="education.html" class="btn btn-sm btn-outline-primary">
+                                Baca Selengkapnya
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Progress Summary -->
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-header">
+                        <h5 class="mb-0">
+                            <i class="fas fa-trophy me-2 text-gold"></i>Progress Mingguan
+                        </h5>
+                    </div>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <h6 class="text-muted mb-3">Target vs Pencapaian</h6>
+                                <div class="progress-item mb-3">
+                                    <div class="d-flex justify-content-between mb-1">
+                                        <span>Jam Tidur Ideal (8 jam)</span>
+                                        <span class="text-primary fw-bold">90%</span>
+                                    </div>
+                                    <div class="progress">
+                                        <div class="progress-bar bg-primary" style="width: 90%"></div>
+                                    </div>
+                                </div>
+                                <div class="progress-item mb-3">
+                                    <div class="d-flex justify-content-between mb-1">
+                                        <span>Konsistensi Waktu Tidur</span>
+                                        <span class="text-success fw-bold">75%</span>
+                                    </div>
+                                    <div class="progress">
+                                        <div class="progress-bar bg-success" style="width: 75%"></div>
+                                    </div>
+                                </div>
+                                <div class="progress-item">
+                                    <div class="d-flex justify-content-between mb-1">
+                                        <span>Program CBT-I</span>
+                                        <span class="text-warning fw-bold">43%</span>
+                                    </div>
+                                    <div class="progress">
+                                        <div class="progress-bar bg-warning" style="width: 43%"></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <h6 class="text-muted mb-3">Pencapaian Terbaru</h6>
+                                <div class="achievement-list">
+                                    <div class="achievement-item">
+                                        <i class="fas fa-medal text-gold me-2"></i>
+                                        <span>Tidur 8 jam berturut-turut selama 3 hari</span>
+                                    </div>
+                                    <div class="achievement-item">
+                                        <i class="fas fa-star text-warning me-2"></i>
+                                        <span>Menyelesaikan Tes Gaya Tidur</span>
+                                    </div>
+                                    <div class="achievement-item">
+                                        <i class="fas fa-fire text-danger me-2"></i>
+                                        <span>Streak 5 hari konsisten</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="js/auth.js"></script>
+    <script src="js/dashboard.js"></script>
+</body>
+</html>
+        }
+    </script>
+</body>
+</html>
+
+
